@@ -1,0 +1,7 @@
+{
+    "python.pythonPath": "/Users/jb/.local/share/virtualenvs/fizz_buzz-XhmaESS1/bin/python",
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true,
+    "python.formatting.provider": "autopep8"
+}
