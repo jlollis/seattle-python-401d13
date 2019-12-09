@@ -1,5 +1,5 @@
 import pytest
-from diner import Diner
+from diner_fancy import Diner
 
 def test_greeting(sample_diner):
     set_scripts(['Welcome to TDD Diner'])
