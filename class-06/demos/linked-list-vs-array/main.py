@@ -17,7 +17,7 @@ def ll_insert():
 
 def array_insert():
     arr.insert(0, 'bacon')
-    arr.pop(0)
+    arr.pop()
 
 
 print('linked list', timeit.timeit(stmt=ll_insert, number=100_000))
