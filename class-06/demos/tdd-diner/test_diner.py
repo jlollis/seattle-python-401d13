@@ -1,64 +1,49 @@
 import pytest
 from diner import Diner
 
-def test_greeting(sample_diner):
-    set_scripts(['Welcome to TDD Diner'])
-
-    sample_diner.dine()
-
-
-def test_bacon_eggs_ham(sample_diner):
-
-    set_scripts(
-        ['Welcome to TDD Diner', 'One order of bacon with a side of eggs and ham coming right up!'],
-        ['Enter main dish: ','Enter first side: ','Enter second side: '],
-        ['bacon','eggs','ham']
-    )
-
-    sample_diner.dine()
+def test_diner_instance():
+    diner = Diner()
+    assert diner
 
 
-def test_olives_pickles_hummus(sample_diner):
+def test_greeting():
 
-    set_scripts(
-        ['Welcome to TDD Diner', 'One order of olives with a side of pickles and hummus coming right up!'],
-        ['Enter main dish: ','Enter first side: ','Enter second side: '],
-        ['olives','pickles','hummus']
-    )
+    prints = ['Welcome to TDD Diner','Home of the hottest cup of joe']
+    prompts = ['Enter main dish: ','Enter side dish: ','Enter beverage: ']
+    responses = []
 
-    sample_diner.dine()
+    def print_for_testing(message):
+        if len(prints):
+            assert message == prints.pop(0)
+
+    def input_for_testing(prompt):
+        if len(prompts):
+            assert prompt == prompts.pop(0)
+
+    diner = Diner(print_for_testing, input_for_testing)
+
+    diner.dine()
+
+def test_final_order():
+
+    prints = [
+        'Welcome to TDD Diner',
+        'Home of the hottest cup of joe',
+        'One order of lasagna with ceasar salad and whisky coming up!'
+    ]
+    prompts = ['Enter main dish: ','Enter side dish: ','Enter beverage: ']
+    responses = ['lasagna','ceasar salad','whisky']
+
+    def print_for_testing(message):
+        assert message == prints.pop(0)
+
+    def input_for_testing(prompt):
+        assert prompt == prompts.pop(0)
+        return responses.pop(0)
+
+    diner = Diner(print_for_testing, input_for_testing)
+
+    diner.dine()
 
 
-#################################################
-## Below code is for helping out tests above ####
-#################################################
-
-scripts = {
-    'prints' : [],
-    'prompts' : [],
-    'inputs' : [],
-}
-
-@pytest.fixture()
-def sample_diner():
-    diner = Diner(mock_print, mock_input)
-    return diner
-
-def set_scripts(prints=[], prompts=[],inputs=[]):
-    scripts['prints'] = prints
-    scripts['prompts'] = prompts
-    scripts['inputs'] = inputs
-
-def mock_print(msg, *args):
-    if len(scripts['prints']):
-        assert scripts['prints'].pop(0) == msg
-
-
-def mock_input(prompt, *args):
-
-    if len(scripts['prompts']):
-        assert prompt == scripts['prompts'].pop(0)
-
-    if len(scripts['inputs']):
-        return scripts['inputs'].pop(0)
 
