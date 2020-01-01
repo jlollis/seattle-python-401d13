@@ -13,6 +13,7 @@ Slack out on class channel your top 3 (or more)
     - Continuation/Port of AJ Javascript project
 - Inventory Management System
 - Fantasy Sports Predictor
+- Oregon Trail
 
 ## Ideas on Web
 - [AI Game Bot](https://www.freecodecamp.org/news/how-to-build-an-ai-game-bot-using-openai-gym-and-universe-f2eb9bfbb40a/)
