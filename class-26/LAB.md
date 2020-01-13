@@ -8,6 +8,7 @@ Today is all about getting comfortable creating a starting point for your Django
 
 ## Setup
 
+- create a Github repo named `django_intro`
 - create a new Django driven website
 - create folder `candy_site`
 - create django application named `candy_project`
