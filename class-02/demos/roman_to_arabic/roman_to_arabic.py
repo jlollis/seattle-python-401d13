@@ -36,17 +36,3 @@ def roman_to_arabic(roman):
     i += 1
 
   return total
-
-
-
-
-
-
-
-
-
-
-
-
-
-
